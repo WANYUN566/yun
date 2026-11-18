@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Huninn&display=swap">
-<title>旅遊行程規劃助手｜Yun端</title>
+<title>Yun端｜旅遊行程規劃助手・旅遊預算記帳工具</title>
 <meta property="og:type" content="website"><meta property="og:site_name" content="Yun端"><meta property="og:title" content="旅遊行程規劃助手｜Yun端"><meta property="og:description" content="排行程排到頭痛？選好地點和天數，景點、美食一次幫你排好。台灣 22 縣市＋日韓港澳泰，共 34 個地點。"><meta property="og:url" content="https://wanyun566.github.io/yun/"><meta property="og:image" content="https://wanyun566.github.io/yun/img/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="旅遊行程規劃助手：排行程排到頭痛？選好地點和天數，景點、美食一次幫你排好"><meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#F6E1DF">
 <link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="description" content="選好地點和天數，自動排好每天的景點和美食。Yun端出品的旅遊行程規劃小工具。">
@@ -219,13 +219,47 @@ main{position:relative;z-index:1}
 .hsteps figcaption{font-size:12.5px;line-height:1.5;color:var(--sub);margin-top:4px}
 .hsteps figcaption b{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--main);color:#fff;font-size:11px;line-height:18px;margin-right:3px}
 .howto .hnote{font-size:12.5px;color:var(--sub);margin:6px 0 0}
+.ptabs{display:flex;gap:6px;margin:0 0 8px}
+.ptabs a{flex:1 1 0;min-width:0;text-decoration:none;text-align:center;border-radius:14px;padding:7px 4px 6px;background:#fff;border:1.5px solid var(--line);color:var(--ink);font-weight:700;font-size:14px;line-height:1.3}
+.ptabs a small{display:block;font-size:12px;font-weight:600;color:var(--sub)}
+.ptabs a.hot small{color:#C2556A}
+.ptabs a.on{background:var(--main);border-color:var(--main);color:#fff}
+.ptabs a.on small{color:#FBE7EA}
+.ptabs a:focus-visible{outline:2px solid var(--main);outline-offset:2px}
+@media(max-width:360px){.ptabs a{font-size:12.5px}}
+.panel[hidden],.top .chips[hidden]{display:none}
+.upsell{display:block;margin:14px 0 0;text-align:center;font-size:14px;font-weight:700;color:var(--main);text-decoration:none;background:#FFF6F7;border:1.5px dashed #EBC4C9;border-radius:14px;padding:10px 12px}
+.plans{display:grid;gap:14px;margin:18px 0}
+.plan{background:#fff;border:1.5px solid var(--line);border-radius:22px;padding:18px 20px;text-align:center}
+.plan .pk{margin:0;font-size:13px;letter-spacing:.12em;color:var(--sub);font-weight:700}
+.plan h3{margin:2px 0 4px;font-size:19px;color:var(--ink)}
+.plan .pp{margin:0;font-size:32px;font-weight:700;color:var(--main);line-height:1.2}
+.plan .pp s{font-size:16px;color:var(--sub);font-weight:400;margin-left:6px}
+.plan .ps{margin:0;font-size:13px;color:var(--sub)}
+.plan .save{display:inline-block;margin:6px 0 0;background:#FBE7EA;color:#A23A50;border-radius:999px;padding:2px 12px;font-size:14px;font-weight:700}
+.plan .pd{margin:8px 0 0;font-size:14.5px;color:var(--ink)}
+.plan .lnk{display:inline-block;margin-top:8px;font-size:14px;font-weight:700;color:var(--main);text-decoration:none}
+.plan.best{border:2px solid var(--main);box-shadow:0 10px 26px rgba(135,75,85,.16)}
+.plan.best .pp{font-size:40px}
+@media(min-width:620px){.plans{grid-template-columns:1fr 1fr}.plan.best{grid-column:1/-1}}
+section[aria-labelledby="b-feat"] li:nth-child(even) .ic{background:var(--blS)}
 </style>
 </head>
 <body>
-<header class="top"><div class="in"><nav class="chips" aria-label="頁面導覽"><a href="#h-feat">功能</a><a href="#shots">實際畫面</a><a href="#price">價格</a><a href="#h-how">購買流程</a><a href="#h-know">購買須知</a><a href="#faq">常見問題</a><a href="#policy">條款政策</a></nav></div></header>
+<header class="top"><div class="in">
+<div class="ptabs" role="tablist" aria-label="選擇商品">
+<a role="tab" href="#plan" data-p="plan" id="tab-plan" aria-controls="p-plan">行程規劃助手<small>NT$299</small></a>
+<a role="tab" href="#budget" data-p="budget" id="tab-budget" aria-controls="p-budget">預算記帳工具<small>NT$199</small></a>
+<a role="tab" href="#combo" data-p="combo" id="tab-combo" aria-controls="p-combo" class="hot">兩款組合價<small>NT$399</small></a>
+</div>
+<nav class="chips" data-for="plan" aria-label="行程規劃助手頁面導覽"><a href="#h-feat">功能</a><a href="#shots">實際畫面</a><a href="#price">價格</a><a href="#h-how">購買流程</a><a href="#h-know">購買須知</a><a href="#faq">常見問題</a><a href="#policy">條款政策</a></nav>
+<nav class="chips" data-for="budget" aria-label="預算記帳工具頁面導覽" hidden><a href="#b-feat">功能</a><a href="#b-shots">實際畫面</a><a href="#b-price">價格</a><a href="#h-how">購買流程</a><a href="#b-know">購買須知</a><a href="#b-faq">常見問題</a><a href="#policy">條款政策</a></nav>
+<nav class="chips" data-for="combo" aria-label="組合方案頁面導覽" hidden><a href="#c-plans">方案比較</a><a href="#c-use">怎麼一起用</a><a href="#h-how">購買流程</a><a href="#policy">條款政策</a></nav>
+</div></header>
 <div class="deco" aria-hidden="true"><svg class="deco-l" viewBox="0 0 220 900" preserveAspectRatio="xMidYMin meet" aria-hidden="true"><g transform="translate(30 60) scale(1.3)" fill="#fff"><ellipse cx="20" cy="12" rx="20" ry="8"/><ellipse cx="30" cy="6" rx="11" ry="8"/><ellipse cx="12" cy="7" rx="8" ry="6"/></g><g transform="translate(120 120) rotate(-14) scale(1.4)"><path d="M2 9 Q0 4 3 3 L6 7Z" fill="#E7A6B0"/><rect x="3" y="5" width="24" height="9" rx="4.5" fill="#E7A6B0"/><path d="M22 5 Q28 5 28 9.5 Q28 14 22 14Z" fill="#E7A6B0"/><path d="M12 10 L9 18 Q11 19 13 18 L18 11Z" fill="#E7A6B0"/><path d="M12 8 L9 2 Q11 1 13 2 L17 8Z" fill="#E7A6B0"/><circle cx="11" cy="9.5" r="1.2" fill="#fff"/><circle cx="15" cy="9.5" r="1.2" fill="#fff"/><circle cx="19" cy="9.5" r="1.2" fill="#fff"/></g><path d="M40 190 Q150 230 90 330 T120 470" fill="none" stroke="#E7A6B0" stroke-width="2" stroke-dasharray="2 7" stroke-linecap="round"/><g transform="translate(70 330) scale(1.2)"><path d="M10 26 Q0 15 0 10 A10 10 0 0 1 20 10 Q20 15 10 26Z" fill="#9CC3E8"/><circle cx="10" cy="10" r="3.6" fill="#fff"/></g><path transform="translate(160 260) scale(1.4)" d="M6 0 L7.6 4.4 12 6 7.6 7.6 6 12 4.4 7.6 0 6 4.4 4.4Z" fill="#C9B3EC"/><g transform="translate(40 470) scale(1.3)"><rect x="8" y="0" width="12" height="6" rx="3" fill="none" stroke="#9CC3E8" stroke-width="2.4"/><rect x="0" y="5" width="28" height="32" rx="7" fill="#9CC3E8"/><rect x="7" y="9" width="2.4" height="24" rx="1.2" fill="#fff" opacity=".6"/><rect x="18.6" y="9" width="2.4" height="24" rx="1.2" fill="#fff" opacity=".6"/><circle cx="7" cy="39" r="2.4" fill="#9CC3E8"/><circle cx="21" cy="39" r="2.4" fill="#9CC3E8"/></g><path transform="translate(150 430) scale(1.3)" d="M7 12 L1.5 6.5 A3.2 3.2 0 0 1 7 2.8 A3.2 3.2 0 0 1 12.5 6.5Z" fill="#E7A6B0"/><g transform="translate(110 600) scale(1)" fill="#fff"><ellipse cx="20" cy="12" rx="20" ry="8"/><ellipse cx="30" cy="6" rx="11" ry="8"/><ellipse cx="12" cy="7" rx="8" ry="6"/></g><g transform="translate(60 690) scale(1.3)"><rect x="0" y="5" width="30" height="20" rx="6" fill="#E7A6B0"/><rect x="8" y="1" width="10" height="6" rx="2" fill="#E7A6B0"/><circle cx="15" cy="15" r="6" fill="#fff"/><circle cx="15" cy="15" r="3.4" fill="#E7A6B0"/></g><path transform="translate(40 800) scale(1.2)" d="M6 0 L7.6 4.4 12 6 7.6 7.6 6 12 4.4 7.6 0 6 4.4 4.4Z" fill="#9CC3E8"/><g transform="translate(130 820) rotate(10) scale(1.1)"><path d="M2 9 Q0 4 3 3 L6 7Z" fill="#C9B3EC"/><rect x="3" y="5" width="24" height="9" rx="4.5" fill="#C9B3EC"/><path d="M22 5 Q28 5 28 9.5 Q28 14 22 14Z" fill="#C9B3EC"/><path d="M12 10 L9 18 Q11 19 13 18 L18 11Z" fill="#C9B3EC"/><path d="M12 8 L9 2 Q11 1 13 2 L17 8Z" fill="#C9B3EC"/><circle cx="11" cy="9.5" r="1.2" fill="#fff"/><circle cx="15" cy="9.5" r="1.2" fill="#fff"/><circle cx="19" cy="9.5" r="1.2" fill="#fff"/></g></svg><svg class="deco-r" viewBox="0 0 220 900" preserveAspectRatio="xMidYMin meet" aria-hidden="true"><path transform="translate(40 50) scale(1.4)" d="M6 0 L7.6 4.4 12 6 7.6 7.6 6 12 4.4 7.6 0 6 4.4 4.4Z" fill="#E7A6B0"/><g transform="translate(80 110) scale(1.2)" fill="#fff"><ellipse cx="20" cy="12" rx="20" ry="8"/><ellipse cx="30" cy="6" rx="11" ry="8"/><ellipse cx="12" cy="7" rx="8" ry="6"/></g><g transform="translate(140 210) scale(1.3)"><path d="M10 26 Q0 15 0 10 A10 10 0 0 1 20 10 Q20 15 10 26Z" fill="#E7A6B0"/><circle cx="10" cy="10" r="3.6" fill="#fff"/></g><path d="M150 260 Q60 320 120 420 T80 560" fill="none" stroke="#9CC3E8" stroke-width="2" stroke-dasharray="2 7" stroke-linecap="round"/><g transform="translate(40 320) rotate(18) scale(1.3)"><path d="M2 9 Q0 4 3 3 L6 7Z" fill="#9CC3E8"/><rect x="3" y="5" width="24" height="9" rx="4.5" fill="#9CC3E8"/><path d="M22 5 Q28 5 28 9.5 Q28 14 22 14Z" fill="#9CC3E8"/><path d="M12 10 L9 18 Q11 19 13 18 L18 11Z" fill="#9CC3E8"/><path d="M12 8 L9 2 Q11 1 13 2 L17 8Z" fill="#9CC3E8"/><circle cx="11" cy="9.5" r="1.2" fill="#fff"/><circle cx="15" cy="9.5" r="1.2" fill="#fff"/><circle cx="19" cy="9.5" r="1.2" fill="#fff"/></g><path transform="translate(160 380) scale(1.3)" d="M7 12 L1.5 6.5 A3.2 3.2 0 0 1 7 2.8 A3.2 3.2 0 0 1 12.5 6.5Z" fill="#C9B3EC"/><g transform="translate(110 470) scale(1.3)"><rect x="0" y="5" width="30" height="20" rx="6" fill="#9CC3E8"/><rect x="8" y="1" width="10" height="6" rx="2" fill="#9CC3E8"/><circle cx="15" cy="15" r="6" fill="#fff"/><circle cx="15" cy="15" r="3.4" fill="#9CC3E8"/></g><g transform="translate(50 580) scale(1.2)"><rect x="8" y="0" width="12" height="6" rx="3" fill="none" stroke="#E7A6B0" stroke-width="2.4"/><rect x="0" y="5" width="28" height="32" rx="7" fill="#E7A6B0"/><rect x="7" y="9" width="2.4" height="24" rx="1.2" fill="#fff" opacity=".6"/><rect x="18.6" y="9" width="2.4" height="24" rx="1.2" fill="#fff" opacity=".6"/><circle cx="7" cy="39" r="2.4" fill="#E7A6B0"/><circle cx="21" cy="39" r="2.4" fill="#E7A6B0"/></g><path transform="translate(170 650) scale(1.2)" d="M6 0 L7.6 4.4 12 6 7.6 7.6 6 12 4.4 7.6 0 6 4.4 4.4Z" fill="#C9B3EC"/><g transform="translate(40 720) scale(1.1)" fill="#fff"><ellipse cx="20" cy="12" rx="20" ry="8"/><ellipse cx="30" cy="6" rx="11" ry="8"/><ellipse cx="12" cy="7" rx="8" ry="6"/></g><g transform="translate(150 780) scale(1.1)"><path d="M10 26 Q0 15 0 10 A10 10 0 0 1 20 10 Q20 15 10 26Z" fill="#C9B3EC"/><circle cx="10" cy="10" r="3.6" fill="#fff"/></g></svg></div>
 <main>
 <p class="brand">☁️ <b>Yun端</b> 出品</p>
+<div class="panel" id="p-plan" role="tabpanel" aria-labelledby="tab-plan">
 <h1>旅遊行程規劃助手</h1>
 <p class="lead">沒時間查資料？選好地點和天數，每天要逛的景點、要吃的東西，一次幫你排好。</p>
 <div class="hero" role="img" aria-label="小動畫：手機畫面上，行程一項一項排好，旁邊的地圖圖釘依序出現">
@@ -315,7 +349,7 @@ main{position:relative;z-index:1}
 </div>
 <div class="snav"><button type="button" class="sprev" aria-label="上一張">‹</button><p class="hint">左右滑動看 5 個步驟</p><button type="button" class="snext" aria-label="下一張">›</button></div>
 </section>
-<script>(function(){var sl=document.querySelector('.slides');document.querySelector('.sprev').onclick=function(){sl.scrollBy({left:-214,behavior:'smooth'})};document.querySelector('.snext').onclick=function(){sl.scrollBy({left:214,behavior:'smooth'})};if(matchMedia('(prefers-reduced-motion: reduce)').matches){var v=document.querySelector('.demo video');if(v){v.removeAttribute('autoplay');v.pause();v.controls=true}}})();</script>
+<script>(function(){document.querySelectorAll('.shots').forEach(function(sec){var sl=sec.querySelector('.slides');sec.querySelector('.sprev').onclick=function(){sl.scrollBy({left:-214,behavior:'smooth'})};sec.querySelector('.snext').onclick=function(){sl.scrollBy({left:214,behavior:'smooth'})}});if(matchMedia('(prefers-reduced-motion: reduce)').matches){var v=document.querySelector('.demo video');if(v){v.removeAttribute('autoplay');v.pause();v.controls=true}}})();</script>
 
 <section class="ticket" id="price" aria-labelledby="h-price">
 <span class="badge" id="h-price">🎉 網站上線慶祝價</span>
@@ -333,16 +367,9 @@ main{position:relative;z-index:1}
 <a class="btn" href="https://lin.ee/rRfCyGK" target="_blank" rel="noopener">立即購買 →</a>
 <p class="paynote">💳 提供信用卡付款</p>
 <div class="linebox"><p>付款完成後，請在官方 LINE 傳<b>訂單編號</b>，核對後就會傳使用連結給你。</p><a href="https://lin.ee/rRfCyGK" target="_blank" rel="noopener">💬 加入官方 LINE「Yun端」→</a></div>
+<a class="upsell" href="#combo" data-go="combo">再加 NT$100，連「旅遊預算記帳工具」一起帶走 →</a>
 </section>
 
-<section class="card" aria-labelledby="h-how">
-<h2 id="h-how">購買流程</h2>
-<ol>
-<li><div><b>點「立即購買」付款</b><span>使用信用卡付款</span></div></li>
-<li><div><b>加官方 LINE「Yun端」</b><span>私訊告知已購買，並傳訂單編號給我（不用傳整張截圖）</span></div></li>
-<li><div><b>收到使用連結</b><span>核對後在 LINE 傳給你，24 小時內回覆</span></div></li>
-</ol>
-</section>
 
 <section class="card" aria-labelledby="h-know">
 <h2 id="h-know">購買前請先注意</h2>
@@ -369,14 +396,191 @@ main{position:relative;z-index:1}
 <details><summary>如果有其他需求，可以輸入嗎？</summary><div><p>可以。在「其他需求」欄位自己寫，例如雨天備案、想看夜景、不去寺廟、不吃豬、少走路，用「、」隔開就好。工具會盡量照著排，做不到的會在行程上方告訴你。</p><p>是不是室內景點、有沒有含豬肉，是從名稱和介紹判斷的，出發前和點餐前請再確認。</p></div></details>
 <details><summary>付款後多久會拿到連結？</summary><div><p>付款完成後，請在官方 LINE 傳訂單編號給我，核對後會在 24 小時內傳使用連結給你。</p></div></details>
 </section>
+</div>
+
+<div class="panel" id="p-budget" role="tabpanel" aria-labelledby="tab-budget" hidden>
+<h1>旅遊預算與花費管理</h1>
+<p class="lead">出發前抓好預算，旅途中隨手記一筆，回家就知道花到哪裡、還剩多少。</p>
+<div class="hero" role="img" aria-label="小動畫：手機上的預算進度條慢慢增加，旁邊的錢幣一枚一枚落下">
+<svg viewBox="0 0 320 170" aria-hidden="true">
+<style>
+@keyframes b-bar{0%,10%{width:0}60%,90%{width:52px}100%{width:52px;opacity:.6}}
+@keyframes b-coin{0%,15%{opacity:0;transform:translateY(-22px)}30%,88%{opacity:1;transform:none}100%{opacity:0}}
+@keyframes b-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes b-row{0%,8%{opacity:0;transform:translateX(-8px)}18%,88%{opacity:1;transform:none}100%{opacity:0}}
+.b-bar{animation:b-bar 6s ease-out infinite}.b-coin{animation:b-coin 6s ease-out infinite}.b-c2{animation-delay:.5s}.b-c3{animation-delay:1s}
+.b-ph{animation:b-float 4s ease-in-out infinite}.b-row{animation:b-row 6s ease-out infinite}.b-r2{animation-delay:.5s}.b-r3{animation-delay:1s}
+</style>
+<rect width="320" height="170" rx="14" fill="#FDF3F4"/>
+<g transform="translate(28 14)"><g class="b-ph">
+ <rect width="104" height="146" rx="16" fill="#3F3A49"/>
+ <rect x="6" y="8" width="92" height="130" rx="11" fill="#fff"/>
+ <rect x="38" y="12" width="28" height="4" rx="2" fill="#E5E1EA"/>
+ <text x="16" y="32" font-size="7" fill="#9A8A90" font-family="sans-serif">剩餘預算</text>
+ <text x="16" y="46" font-size="13" font-weight="700" fill="#3F3A49" font-family="sans-serif">NT$ 28,560</text>
+ <rect x="16" y="52" width="72" height="6" rx="3" fill="#F3E3E5"/>
+ <rect class="b-bar" x="16" y="52" width="52" height="6" rx="3" fill="#874B55"/>
+ <g class="b-row"><circle cx="21" cy="72" r="4" fill="#E28896"/><rect x="30" y="68" width="34" height="7" rx="3.5" fill="#FBE7EA"/><rect x="70" y="68" width="18" height="7" rx="3.5" fill="#F3E3E5"/></g>
+ <g class="b-row b-r2"><circle cx="21" cy="88" r="4" fill="#2F6CA8"/><rect x="30" y="84" width="28" height="7" rx="3.5" fill="#E4EFFA"/><rect x="70" y="84" width="18" height="7" rx="3.5" fill="#F3E3E5"/></g>
+ <g class="b-row b-r3"><circle cx="21" cy="104" r="4" fill="#6B4E99"/><rect x="30" y="100" width="38" height="7" rx="3.5" fill="#EEE6F7"/><rect x="70" y="100" width="18" height="7" rx="3.5" fill="#F3E3E5"/></g>
+ <rect x="16" y="118" width="72" height="13" rx="6.5" fill="#874B55"/>
+ <text x="52" y="127" font-size="7" fill="#fff" text-anchor="middle" font-family="sans-serif">＋ 記一筆</text>
+</g></g>
+<g transform="translate(160 26)">
+ <rect width="136" height="118" rx="14" fill="#EAF3FC"/>
+ <g class="b-coin"><circle cx="38" cy="78" r="17" fill="#F7D9A8" stroke="#D9A94F" stroke-width="1.5"/><text x="38" y="83.5" font-size="15" font-weight="700" text-anchor="middle" fill="#9A6A1C" font-family="sans-serif">¥</text></g>
+ <g class="b-coin b-c2"><circle cx="70" cy="58" r="15" fill="#FBE7EA" stroke="#E28896" stroke-width="1.5"/><text x="70" y="63" font-size="13" font-weight="700" text-anchor="middle" fill="#874B55" font-family="sans-serif">₩</text></g>
+ <g class="b-coin b-c3"><circle cx="102" cy="80" r="16" fill="#E4EFFA" stroke="#7FB0E0" stroke-width="1.5"/><text x="102" y="85" font-size="12" font-weight="700" text-anchor="middle" fill="#2F6CA8" font-family="sans-serif">NT$</text></g>
+ <path d="M18 24h100" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+</g>
+</svg>
+</div>
+
+<section class="card intro" aria-labelledby="b-intro">
+<h2 id="b-intro" class="intro-t">旅行最開心的是出去玩，最頭痛的是回來算錢！</h2>
+<p class="note">你是不是也遇過：</p>
+<div class="bubbles">
+<p class="bb">「這趟到底花了多少？」</p>
+<p class="bb bb-r">「剛剛那餐是誰先付的？」</p>
+<p class="bb">「這個日圓換成台幣是多少？」</p>
+<p class="bb bb-r">「回國後分帳，算到頭都昏了…」</p>
+</div>
+<p class="intro-mid">邊玩邊記，花得安心，回家不用再對帳！</p>
+<p class="note"><b>【旅遊預算與花費管理】</b>幫你把預算、記帳、外幣、分帳整理在一起。<br>每一筆幾秒就能記好，旅程中隨時知道還能花多少。</p>
+<p class="intro-cta">一次買斷 NT$199，讓每一趟旅行都花得剛剛好。</p>
+</section>
+
+<section class="card" aria-labelledby="b-feat">
+<h2 id="b-feat">可以幫你做什麼</h2>
+<ul class="feat">
+<li><span class="ic qi" aria-hidden="true"><svg viewBox="0 0 28 28" width="24" height="24" aria-hidden="true"><rect x="4" y="6" width="20" height="16" rx="3" fill="#FBE7EA" stroke="#E28896" stroke-width="1"/><rect x="7" y="16" width="14" height="3" rx="1.5" fill="#fff"/><rect x="7" y="16" width="9" height="3" rx="1.5" fill="#874B55"/><path d="M8 11h8" stroke="#E28896" stroke-width="1.6" stroke-linecap="round"/></svg></span><div><b>預算儀表板，一眼看懂</b><span>剩餘預算、今天花了多少、每天建議可以花多少；用到 50%、80%、超支會換顏色提醒</span></div></li>
+<li><span class="ic qi" aria-hidden="true"><svg viewBox="0 0 28 28" width="24" height="24" aria-hidden="true"><rect x="5" y="4" width="15" height="20" rx="2.5" fill="#E4EFFA" stroke="#7FB0E0" stroke-width="1"/><path d="M8 10h9M8 14h7M8 18h5" stroke="#A9CDF0" stroke-width="1.3" stroke-linecap="round"/><path d="M17 21l6-9 2 1.3-6 9-2.4.9z" fill="#F2B8BE" stroke="#874B55" stroke-width=".8" stroke-linejoin="round"/></svg></span><div><b>記一筆只要幾秒</b><span>填金額、項目、點類別就好；也可以打一句「拉麵 1200 日圓 刷卡」，或用手機鍵盤的麥克風直接說</span></div></li>
+<li><span class="ic qi" aria-hidden="true"><svg viewBox="0 0 28 28" width="24" height="24" aria-hidden="true"><circle cx="11" cy="14" r="7" fill="#FBE7EA" stroke="#E28896" stroke-width="1"/><text x="11" y="17.5" font-size="9" text-anchor="middle" fill="#874B55" font-family="sans-serif" font-weight="700">¥</text><path d="M19 8a6 6 0 0 1 4 9" stroke="#7FB0E0" stroke-width="1.4" fill="none" stroke-linecap="round"/><path d="M21.5 16.5l1.6.8.6-1.8" stroke="#7FB0E0" stroke-width="1.3" fill="none" stroke-linecap="round"/></svg></span><div><b>外幣自動換算台幣</b><span>依目的地自動選幣別，可以查今天的參考匯率；記錄換匯，算出手上還剩多少外幣現金</span></div></li>
+<li><span class="ic qi" aria-hidden="true"><svg viewBox="0 0 28 28" width="24" height="24" aria-hidden="true"><circle cx="10" cy="10" r="4" fill="#F2B8BE"/><circle cx="19" cy="11" r="3.4" fill="#A9CDF0"/><path d="M3 22c0-4 3-6.5 7-6.5s7 2.5 7 6.5z" fill="#F2B8BE"/><path d="M14 22c.5-3.4 2.4-5.5 5-5.5 3 0 5 2.2 5 5.5z" fill="#A9CDF0"/></svg></span><div><b>多人分帳不吵架</b><span>誰付錢、誰分攤都記清楚，自動算出最少的轉帳次數；也能用公費錢包</span></div></li>
+<li><span class="ic qi" aria-hidden="true"><svg viewBox="0 0 28 28" width="24" height="24" aria-hidden="true"><path d="M4 15l20-9-6 17-4-6z" fill="#FBE7EA" stroke="#E28896" stroke-width="1" stroke-linejoin="round"/><path d="M14 17l10-11" stroke="#E28896" stroke-width="1"/></svg></span><div><b>旅行中模式</b><span>旅途中只看重點：今天還能花多少、剩餘預算、外幣現金、還沒結清的分帳</span></div></li>
+<li><span class="ic qi" aria-hidden="true"><svg viewBox="0 0 28 28" width="24" height="24" aria-hidden="true"><path d="M7 4h10l5 5v15H7z" fill="#E4EFFA" stroke="#7FB0E0" stroke-width="1" stroke-linejoin="round"/><path d="M17 4v5h5" fill="none" stroke="#7FB0E0" stroke-width="1"/><path d="M14.5 11v8m-3.2-3.2 3.2 3.2 3.2-3.2" stroke="#874B55" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>匯入行程，點一下就記帳</b><span>行程規劃助手下載的文字檔、PDF 或自己打的行程都能匯入，記帳時點今天的行程就自動帶入</span></div></li>
+<li><span class="ic qi" aria-hidden="true"><svg viewBox="0 0 28 28" width="24" height="24" aria-hidden="true"><rect x="4" y="4" width="20" height="20" rx="3" fill="#FBE7EA"/><rect x="8" y="14" width="3" height="6" rx="1" fill="#E28896"/><rect x="12.5" y="10" width="3" height="10" rx="1" fill="#874B55"/><rect x="17" y="7" width="3" height="13" rx="1" fill="#A9CDF0"/></svg></span><div><b>旅行結束看報告</b><span>各類別花費和預算比較、每日花費、分帳結果，可以存成 PDF、匯出 Excel（CSV），也有可分享的總結圖</span></div></li>
+<li><span class="ic qi" aria-hidden="true"><svg viewBox="0 0 28 28" width="24" height="24" aria-hidden="true"><rect x="7" y="3" width="14" height="22" rx="3" fill="#E4EFFA" stroke="#7FB0E0" stroke-width="1"/><rect x="10" y="7" width="3.4" height="3.4" rx="1" fill="#F2B8BE"/><rect x="14.6" y="7" width="3.4" height="3.4" rx="1" fill="#874B55"/><rect x="10" y="12" width="3.4" height="3.4" rx="1" fill="#A9CDF0"/></svg></span><div><b>加到手機桌面</b><span>點一下就打開，像 App 一樣用，可以同時記好幾趟旅行</span></div></li>
+</ul>
+</section>
+
+<section class="card shots" id="b-shots" aria-labelledby="h-bshots">
+<h2 id="h-bshots">實際畫面長這樣</h2>
+<p class="note">下面都是工具的真實畫面，用「東京五日遊、三個人」當例子。</p>
+<div class="slides" tabindex="0" role="group" aria-label="工具畫面，可以左右滑動">
+<figure><div class="ph"><img src="img/b1.jpg" alt="預算儀表板畫面：剩多少、每天可以花多少" loading="lazy"></div><figcaption><b>1</b><div>預算儀表板<span>剩多少、每天可以花多少</span></div></figcaption></figure>
+<figure><div class="ph"><img src="img/b2.jpg" alt="旅行中模式畫面：今天能花多少、外幣現金、分帳" loading="lazy"></div><figcaption><b>2</b><div>旅行中模式<span>今天能花多少、外幣現金、分帳</span></div></figcaption></figure>
+<figure><div class="ph"><img src="img/b3.jpg" alt="快速記帳畫面：一句話輸入、外幣自動換算" loading="lazy"></div><figcaption><b>3</b><div>快速記帳<span>一句話輸入、外幣自動換算</span></div></figcaption></figure>
+<figure><div class="ph"><img src="img/b4.jpg" alt="分帳結果畫面：誰應收、誰應付，一看就懂" loading="lazy"></div><figcaption><b>4</b><div>分帳結果<span>誰應收、誰應付，一看就懂</span></div></figcaption></figure>
+<figure><div class="ph"><img src="img/b5.jpg" alt="旅行報告畫面：存成 PDF、匯出 Excel" loading="lazy"></div><figcaption><b>5</b><div>旅行報告<span>存成 PDF、匯出 Excel</span></div></figcaption></figure>
+</div>
+<div class="snav"><button type="button" class="sprev" aria-label="上一張">‹</button><p class="hint">左右滑動看 5 個畫面</p><button type="button" class="snext" aria-label="下一張">›</button></div>
+</section>
+
+<section class="ticket" id="b-price" aria-labelledby="h-bprice">
+<span class="badge" id="h-bprice">方案 A｜旅遊預算記帳工具</span>
+<p class="num">NT$199<small>／一次購買</small></p>
+<p class="sub">付款後，在官方 LINE 收到使用連結</p>
+<hr>
+<ul>
+<li>預算儀表板：剩多少、每天可以花多少、超支提醒</li>
+<li>幾秒記一筆，外幣自動換算台幣</li>
+<li>多人分帳、公費錢包，自動算出最少轉帳</li>
+<li>匯入行程，記帳時點一下就帶入</li>
+<li>旅行報告可以存成 PDF、匯出 Excel（CSV）</li>
+</ul>
+<a class="btn" href="https://lin.ee/rRfCyGK" target="_blank" rel="noopener">立即購買 →</a>
+<p class="paynote">💳 提供信用卡付款</p>
+<div class="linebox"><p>付款完成後，請在官方 LINE 傳<b>訂單編號</b>，核對後就會傳使用連結給你。</p><a href="https://lin.ee/rRfCyGK" target="_blank" rel="noopener">💬 加入官方 LINE「Yun端」→</a></div>
+<a class="upsell" href="#combo" data-go="combo">再加 NT$200，連「旅遊行程規劃助手」一起帶走 →</a>
+</section>
+
+<section class="card" id="b-know" aria-labelledby="h-bknow">
+<h2 id="h-bknow">購買前請先注意</h2>
+<p class="note">・資料只存在你自己手機（或電腦）的瀏覽器裡，沒有帳號、也沒有雲端同步。換手機、清除瀏覽資料前，請先在工具裡「匯出備份」，再到新手機匯入。</p>
+<p class="note">・一起出遊時，資料不會自動同步到旅伴的手機，建議由一個人負責記帳，再把分帳結果或報告傳給大家。</p>
+<p class="note">・匯率查詢和讀取 PDF 需要網路；查到的匯率只是參考，實際金額請以銀行或刷卡帳單為準。</p>
+<p class="note">・分帳和統計是依你記下的資料計算，記錯了結果也會跟著錯，記得自己再確認一次。</p>
+<p class="note">・目前不能附加收據照片。</p>
+<p class="note warn-soft">・這是幫你掌握旅行花費的記帳小工具，不是會計或報稅軟體。</p>
+</section>
+
+<section class="card policy faq" id="b-faq" aria-labelledby="h-bfaq">
+<h2 id="h-bfaq">常見問題</h2>
+<p class="note">點選問題，就會看到回答。</p>
+<details><summary>需要下載 App 嗎？手機、電腦都能用嗎？</summary><div><p>不用下載 App，也不用註冊帳號。收到連結後，用手機或電腦的瀏覽器打開就能使用，建議用 Safari 或 Chrome，也可以加到手機桌面。</p><p>在 LINE 裡直接點開也能用，但匯出檔案可能會失敗，建議改用瀏覽器打開。</p></div></details>
+<details><summary>我記的資料，別人看得到嗎？</summary><div><p>看不到。資料只存在你自己的手機瀏覽器裡，不會上傳，我們也看不到。</p></div></details>
+<details><summary>換手機的話，資料怎麼辦？</summary><div><p>在舊手機的工具裡按「匯出備份」，把備份檔傳到新手機，再用「匯入備份」就能接著用。匯入前會先告訴你檔案裡有幾趟旅行、幾筆花費，確認後才會匯入。</p></div></details>
+<details><summary>一起出遊的朋友也要買嗎？</summary><div><p>不用。只要一個人記帳就好，分帳結果和旅行報告可以傳給旅伴看。使用連結僅供購買者本人使用，請不要轉傳。</p></div></details>
+<details><summary>可以和行程規劃助手一起用嗎？</summary><div><p>可以。行程規劃助手下載的文字檔，可以直接匯入記帳工具的「我的行程」，旅途中點一下今天的行程就能記帳。兩款一起買有組合價，詳細請看「兩款組合價」分頁。</p></div></details>
+<details><summary>可以記幾趟旅行？</summary><div><p>沒有限制，每一趟旅行分開記，可以隨時切換。</p></div></details>
+<details><summary>付款後多久會拿到連結？</summary><div><p>付款完成後，請在官方 LINE 傳訂單編號給我，核對後會在 24 小時內傳使用連結給你。</p></div></details>
+</section>
+</div>
+
+<div class="panel" id="p-combo" role="tabpanel" aria-labelledby="tab-combo" hidden>
+<h1>旅遊全攻略組合</h1>
+<p class="lead">出發前排好行程，旅途中管好預算。兩款一起買，現省 NT$99。</p>
+
+<section class="plans" id="c-plans" aria-label="方案比較">
+<div class="plan">
+<p class="pk">方案 A</p><h3>旅遊預算記帳工具</h3>
+<p class="pp">NT$199</p><p class="ps">單獨購買</p>
+<p class="pd">預算、記帳、外幣、分帳、旅行報告</p>
+<a class="lnk" href="#budget" data-go="budget">看功能介紹 →</a>
+</div>
+<div class="plan">
+<p class="pk">方案 B</p><h3>旅遊行程規劃助手</h3>
+<p class="pp">NT$299</p><p class="ps">單獨購買</p>
+<p class="pd">選地點和天數，一鍵排好每天的景點和美食</p>
+<a class="lnk" href="#plan" data-go="plan">看功能介紹 →</a>
+</div>
+<div class="plan best ticket" id="c-price">
+<span class="badge">⭐ 主推組合方案</span>
+<p class="pk">方案 C</p><h3>旅遊全攻略組合</h3>
+<p class="pp">NT$399 <s>NT$498</s></p><p class="save">現省 NT$99</p>
+<p class="pd">包含：旅遊行程規劃助手＋旅遊預算與花費管理</p>
+<hr>
+<ul>
+<li>行程規劃助手：34 個地點、1～3 天行程一鍵排好</li>
+<li>預算記帳工具：預算、記帳、外幣、分帳、旅行報告</li>
+<li>排好的行程可以直接匯入記帳工具</li>
+<li>付款後兩個使用連結一起給你</li>
+</ul>
+<a class="btn" href="https://lin.ee/rRfCyGK" target="_blank" rel="noopener">購買組合方案 →</a>
+<p class="paynote">💳 提供信用卡付款</p>
+</div>
+</section>
+
+<section class="card" id="c-use" aria-labelledby="h-cuse">
+<h2 id="h-cuse">兩款怎麼一起用</h2>
+<ol>
+<li><div><b>出發前：用行程規劃助手排行程</b><span>選好地點和天數，景點和美食一次排好，下載成文字檔</span></div></li>
+<li><div><b>匯入記帳工具</b><span>在記帳工具的「我的行程」匯入文字檔，順便設定預算</span></div></li>
+<li><div><b>旅途中：點一下就記帳</b><span>記帳時點今天的行程，名稱和類別自動帶入，隨時看還能花多少</span></div></li>
+<li><div><b>回家後：看報告、分好帳</b><span>花費報告存成 PDF，分帳結果傳給旅伴</span></div></li>
+</ol>
+</section>
+</div>
+
+
+<section class="card" id="how" aria-labelledby="h-how">
+<h2 id="h-how">購買流程</h2>
+<ol>
+<li><div><b>點「立即購買」付款</b><span>使用信用卡付款</span></div></li>
+<li><div><b>加官方 LINE「Yun端」</b><span>私訊告知買了哪個方案，並傳訂單編號給我（不用傳整張截圖）</span></div></li>
+<li><div><b>收到使用連結</b><span>核對後在 LINE 傳給你，24 小時內回覆；組合方案會一次給兩個連結</span></div></li>
+</ol>
+</section>
 
 <section class="card policy" id="policy" aria-labelledby="h-policy">
 <h2 id="h-policy">服務條款與相關政策</h2>
 <p class="note">點選每個項目，就會展開詳細內容。</p>
 <details><summary>服務條款</summary><div>
-<p>「旅遊行程規劃助手」為 NT$299 一次購買的線上數位工具。付款完成後，會在官方 LINE 提供使用連結。</p>
+<p>本頁販售的都是一次購買的線上數位工具：「旅遊預算與花費管理」NT$199、「旅遊行程規劃助手」NT$299、「旅遊全攻略組合」（以上兩款）NT$399。付款完成後，會在官方 LINE 提供使用連結。</p>
 <p>工具內容：依你選擇的地點、天數與需求（也可以自己寫需求，例如雨天備案、不吃豬），從內建的範例清單排出 1～3 天的建議行程；也可以自己挑景點和美食，再自動排成行程。排好後可以新增行程、查看照片和評論、打開 Google 地圖路線，並下載成 PDF 或文字檔。</p>
-<p>本商品不包含：一對一客製行程、航班與住宿安排、即時的營業時間與價格資訊。</p>
+<p>旅遊預算與花費管理：設定旅行預算、記錄花費（可輸入外幣並換算新台幣）、多人分帳與公費、記錄換匯、匯入行程，並可查看統計與旅行報告、匯出 PDF／CSV／備份檔。資料只存在使用者自己的瀏覽器，不提供雲端同步。</p>
+<p>本商品不包含：一對一客製行程、航班與住宿安排、即時的營業時間與價格資訊、會計或報稅服務。</p>
 <p>使用連結僅供購買者本人使用，請勿轉售、公開散布，或用來製作相似的商品。</p>
 </div></details>
 <details><summary>退款說明</summary><div>
@@ -388,6 +592,7 @@ main{position:relative;z-index:1}
 <p>付款資料由信用卡金流公司處理，我們不會經手或保存你的信用卡卡號。</p>
 <p>付款後，請在官方 LINE 提供<b>訂單編號</b>以領取使用連結。你提供的資料只用於核對訂單、交付商品與客服聯繫，核對完成後即刪除，不會轉售或提供給第三方。</p>
 <p>行程規劃助手本身不會收集你的姓名、電話等個人資料；你排的行程只顯示在你自己的畫面上，我們看不到，也不會保存。</p>
+<p>旅遊預算與花費管理的記帳資料只存在你自己裝置的瀏覽器裡，不會上傳到我們的伺服器，我們看不到。查詢匯率時，工具只會向公開的匯率服務查詢幣別，不會傳送你的記帳資料。</p>
 </div></details>
 <details><summary>客服聯絡資訊</summary><div>
 <p>官方 LINE 負責付款後的連結領取、訂單問題與重要公告，並非即時客服，會在 24 小時內回覆，請耐心等候：<a href="https://lin.ee/rRfCyGK" target="_blank" rel="noopener">https://lin.ee/rRfCyGK</a></p>
@@ -431,14 +636,30 @@ main{position:relative;z-index:1}
 <p class="bye">準備好了嗎？祝你旅途愉快 ♡</p></div>
 <footer>有任何問題，歡迎加官方 LINE 詢問 ☁️<br><a href="https://lin.ee/rRfCyGK" target="_blank" rel="noopener" style="color:var(--main)">https://lin.ee/rRfCyGK</a><br>聯絡信箱：<a href="mailto:c1231335388@gmail.com" style="color:var(--main)">c1231335388@gmail.com</a><br>© Yun端</footer>
 </main>
-<div class="buybar"><a href="https://lin.ee/rRfCyGK" target="_blank" rel="noopener">慶祝價 NT$299・立即購買 →</a></div>
+<div class="buybar"><a href="https://lin.ee/rRfCyGK" target="_blank" rel="noopener" id="buyBar">慶祝價 NT$299・立即購買 →</a></div>
 <script>
-(function(){var bar=document.querySelector('.buybar'),t=document.querySelector('.ticket');if(!bar||!t||!('IntersectionObserver' in window))return;
-var a=bar.querySelector('a');new IntersectionObserver(function(e){var on=e[0].isIntersecting;bar.classList.toggle('off',on);if(on){a.setAttribute('tabindex','-1');bar.setAttribute('aria-hidden','true')}else{a.removeAttribute('tabindex');bar.removeAttribute('aria-hidden')}},{threshold:0.15}).observe(t);})();
+(function(){var bar=document.querySelector('.buybar'),t=document.querySelectorAll('.ticket');if(!bar||!t.length||!('IntersectionObserver' in window))return;
+var a=bar.querySelector('a'),vis={};var io=new IntersectionObserver(function(e){e.forEach(function(x){vis[x.target.id||x.target.className]=x.isIntersecting&&x.target.offsetParent!==null});var on=Object.keys(vis).some(function(k){return vis[k]});bar.classList.toggle('off',on);if(on){a.setAttribute('tabindex','-1');bar.setAttribute('aria-hidden','true')}else{a.removeAttribute('tabindex');bar.removeAttribute('aria-hidden')}},{threshold:0.15});t.forEach(function(x){io.observe(x)});})();
 </script>
 <script>
-(function(){var b=document.querySelector('.bubbles');if(!b)return;if(!('IntersectionObserver' in window)){b.classList.add('go');return}
-new IntersectionObserver(function(e,o){if(e[0].isIntersecting){b.classList.add('go');o.disconnect()}},{threshold:.3}).observe(b);})();
+(function(){document.querySelectorAll('.bubbles').forEach(function(b){if(!('IntersectionObserver' in window)){b.classList.add('go');return}
+new IntersectionObserver(function(e,o){if(e[0].isIntersecting){b.classList.add('go');o.disconnect()}},{threshold:.3}).observe(b)});})();
+</script>
+<script>
+(function(){
+var P={plan:{t:'Yun端｜旅遊行程規劃助手',bar:'慶祝價 NT$299・立即購買 →'},budget:{t:'Yun端｜旅遊預算與花費管理',bar:'NT$199・立即購買 →'},combo:{t:'Yun端｜旅遊全攻略組合',bar:'組合價 NT$399・現省 NT$99 →'}};
+function show(k,scroll){if(!P[k])k='plan';
+document.querySelectorAll('.panel').forEach(function(x){x.hidden=x.id!=='p-'+k});
+document.querySelectorAll('.ptabs a').forEach(function(a){var on=a.dataset.p===k;a.setAttribute('aria-selected',on);a.classList.toggle('on',on)});
+document.querySelectorAll('.top .chips').forEach(function(n){n.hidden=n.dataset.for!==k});
+document.title=P[k].t;var b=document.getElementById('buyBar');if(b)b.textContent=P[k].bar;
+if(scroll)window.scrollTo(0,0);}
+function fromHash(sc){var h=location.hash.slice(1);if(P[h])show(h,sc);else{var el=h&&document.getElementById(h),pn=el&&el.closest('.panel');show(pn?pn.id.slice(2):(document.querySelector('.ptabs a.on')||{dataset:{p:'plan'}}).dataset.p,false);if(el)setTimeout(function(){el.scrollIntoView()},0)}}
+document.addEventListener('click',function(e){var a=e.target.closest('[data-p],[data-go]');if(!a)return;e.preventDefault();var k=a.dataset.p||a.dataset.go;history.pushState(null,'','#'+k);show(k,true)});
+window.addEventListener('hashchange',function(){fromHash(true)});
+window.addEventListener('popstate',function(){fromHash(true)});
+fromHash(false);
+})();
 </script>
 </body>
 </html>
