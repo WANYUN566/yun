@@ -1,0 +1,193 @@
+<title>Yun端 商品一覽</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap">
+<style>
+/* 版面：生活風格品牌的型錄。奶茶霧粉底、大量留白、細線；標題用細明體，商品圖放在拱形畫框裡 */
+:root{
+  --bg:#F6F1EC; --paper:#FCFAF7; --line:#E5DAD2; --ink:#4A3F3C; --sub:#8E817C;
+  --rose:#A47677; --roseS:#EEDFDB; --sand:#EAE0D5; --mist:#E7E1EA;
+  --serif:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#211C1B; --paper:#2A2423; --line:#3E3533; --ink:#EFE6E2; --sub:#B3A6A1;
+  --rose:#D9A9AA; --roseS:#3D2F2F; --sand:#3A322B; --mist:#332E38; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#211C1B; --paper:#2A2423; --line:#3E3533; --ink:#EFE6E2; --sub:#B3A6A1;
+  --rose:#D9A9AA; --roseS:#3D2F2F; --sand:#3A322B; --mist:#332E38; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.85;letter-spacing:.03em}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.pad{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.wrap{max-width:940px;margin:0 auto}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:1px solid var(--rose);outline-offset:4px}
+.serif{font-family:var(--serif)}
+/* 頁首 */
+.top .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:22px}
+.logo{font-family:var(--serif);font-size:20px;font-weight:500;letter-spacing:.12em}
+.top nav{display:flex;gap:22px;font-size:14px;color:var(--sub)}
+.top nav a:hover{color:var(--ink)}
+/* 開場 */
+.hero{padding-block:40px 30px;text-align:center}
+.kicker{font-size:12px;letter-spacing:.32em;color:var(--sub);margin:0}
+.hero h1 em{font-style:normal}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(38px,9.5vw,62px);line-height:1.45;margin:18px 0 0;letter-spacing:.08em;text-wrap:balance}
+.hero .rule{width:36px;height:1px;background:var(--rose);margin:26px auto}
+.hero p{margin:0 auto;max-width:26em;color:var(--sub);font-size:17px}
+.down{display:inline-block;margin-top:28px;font-size:14px;letter-spacing:.2em;border-bottom:1px solid var(--ink);padding-bottom:4px}
+.down:hover{color:var(--rose);border-color:var(--rose)}
+/* 一行承諾 */
+.promise{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 0;margin:48px 0 0;padding:0;list-style:none;font-size:15px;color:var(--ink)}
+.promise li+li::before{content:"·";margin:0 14px;color:var(--rose)}
+@media(max-width:520px){.promise{display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:320px;margin-inline:auto}.promise li+li::before{content:none}.promise li{border:1px solid var(--line);border-radius:999px;padding:4px 0}}
+/* 商品 */
+.sec{padding-block:70px 0}
+.sec-h{text-align:center;margin-bottom:34px}
+.sec-h h2{font-family:var(--serif);font-weight:500;font-size:32px;letter-spacing:.14em;margin:6px 0 0}
+.filter{display:flex;justify-content:center;gap:26px;margin-top:18px}
+.filter button{font:inherit;font-size:14px;color:var(--sub);background:none;border:0;border-bottom:1px solid transparent;padding:2px 0;cursor:pointer;letter-spacing:.12em}
+.filter button[aria-pressed="true"]{color:var(--ink);border-color:var(--ink)}
+.grid{display:grid;gap:56px 28px}
+@media(min-width:720px){.grid{grid-template-columns:repeat(3,1fr)}}
+.prod{display:flex;flex-direction:column;align-items:center;text-align:center;min-width:0}
+.arch{width:min(260px,78%);aspect-ratio:3/4;border-radius:999px 999px 6px 6px;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;padding-top:34px}
+.arch img{width:70%;height:100%;object-fit:cover;object-position:top;border-radius:14px 14px 0 0;box-shadow:0 8px 24px rgba(74,63,60,.14);display:block}
+@media(prefers-reduced-motion:no-preference){.arch img{transition:transform .5s ease}.prod:hover .arch img{transform:translateY(-6px)}}
+.prod .cat{margin:22px 0 0;font-size:12px;letter-spacing:.3em;color:var(--sub)}
+.prod h3{font-family:var(--serif);font-weight:500;font-size:24px;letter-spacing:.08em;margin:6px 0 4px}
+.prod p{margin:0;font-size:15.5px;color:var(--sub)}
+.prod .pr{margin-top:14px;font-family:var(--serif);font-size:30px;font-weight:600;letter-spacing:.04em;line-height:1.2;font-variant-numeric:tabular-nums}
+.prod .pr small{font-family:var(--sans);font-size:12px;font-weight:300;color:var(--sub);letter-spacing:.1em;margin-left:6px}
+.prod .more{margin-top:10px;font-size:13px;letter-spacing:.2em;border-bottom:1px solid var(--line);padding-bottom:3px}
+.prod:hover .more{border-color:var(--rose);color:var(--rose)}
+/* 組合 */
+.combo{display:grid;gap:18px;align-items:center;margin-top:70px;padding:36px 28px;background:var(--paper);border:1px solid var(--line);border-radius:6px;text-align:center}
+.combo .cat{font-size:12px;letter-spacing:.3em;color:var(--rose);margin:0}
+.combo h3{font-family:var(--serif);font-weight:500;font-size:28px;letter-spacing:.1em;margin:8px 0 6px}
+.combo p{margin:0;color:var(--sub);font-size:14.5px}
+.combo .pr{font-family:var(--serif);font-size:38px;letter-spacing:.04em}
+.combo .pr s{font-size:15px;color:var(--sub);margin-left:10px}
+.combo .save{display:block;font-family:var(--sans);font-size:15px;font-weight:500;letter-spacing:.2em;color:var(--rose)}
+.combo .go{justify-self:center;display:inline-block;background:var(--ink);color:var(--paper);font-size:14px;letter-spacing:.2em;padding:12px 30px;border-radius:2px}
+.combo .go:hover{background:var(--rose)}
+@media(min-width:720px){.combo{grid-template-columns:1.4fr 1fr auto;text-align:left;padding:40px 44px}.combo .go{justify-self:end}}
+/* 奶茶色＋點綴：底色不變，每個商品有自己的顏色，重點用深豆沙玫瑰 */
+.c-plan{--pc:#B4606F;--a-bg:#F2D6DA}
+.c-trip{--pc:#5F8A72;--a-bg:#DCE8DE}
+.c-acct{--pc:#7D6BAE;--a-bg:#E3DDF2}
+.prod .cat{color:var(--pc)}
+.prod .more,.prod:hover .more{border-color:var(--pc);color:var(--pc)}
+body:not(.bright){--rose:#B4606F}
+body:not(.bright) .hero h1 em{color:var(--rose)}
+body:not(.bright) .hero .rule{background:var(--rose);width:48px;height:2px}
+body:not(.bright) .down{color:#fff;background:var(--rose);border:0;border-radius:999px;padding:12px 32px;letter-spacing:.2em}
+body:not(.bright) .down:hover{color:#fff;filter:brightness(.92)}
+body:not(.bright) .promise li:nth-child(1),body:not(.bright) .promise li:nth-child(4){color:#B4606F}
+body:not(.bright) .promise li:nth-child(2){color:#5F8A72}
+body:not(.bright) .promise li:nth-child(3){color:#7D6BAE}
+body:not(.bright) .filter button[aria-pressed="true"]{color:var(--rose);border-color:var(--rose)}
+body:not(.bright) .combo{background:#FBE1E6;border-color:transparent;color:var(--ink)}
+body:not(.bright) .combo .cat{color:var(--rose)}
+body:not(.bright) .combo p,body:not(.bright) .combo .pr s{color:var(--sub)}
+body:not(.bright) .combo .save{color:var(--rose)}
+body:not(.bright) .combo .go{background:var(--rose);color:#fff;border-radius:999px}
+body:not(.bright) .combo .go:hover{background:var(--rose);filter:brightness(.92)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .c-plan{--pc:#E59AA7;--a-bg:#3D2A2E}:root:not([data-theme="light"]) .c-trip{--pc:#93C2A6;--a-bg:#26342C}:root:not([data-theme="light"]) .c-acct{--pc:#B7A7E6;--a-bg:#302B42}:root:not([data-theme="light"]) body:not(.bright) .promise li{color:var(--ink)!important}:root:not([data-theme="light"]) body:not(.bright) .combo{background:#3F2930}}
+:root[data-theme="dark"] body:not(.bright) .combo{background:#3F2930}:root[data-theme="dark"] .c-plan{--pc:#E59AA7;--a-bg:#3D2A2E}:root[data-theme="dark"] .c-trip{--pc:#93C2A6;--a-bg:#26342C}:root[data-theme="dark"] .c-acct{--pc:#B7A7E6;--a-bg:#302B42}
+/* 明亮版：白底、清楚的玫瑰紅重點色、明亮的淡色畫框 */
+body.bright .c-plan{--a-bg:#FFE1E6}body.bright .c-trip{--a-bg:#FFEAD6}body.bright .c-acct{--a-bg:#E8E4FF}
+body.bright{--bg:#FFFFFF;--paper:#FFF5F6;--line:#F0E3E5;--ink:#2B2326;--sub:#6E6467;--rose:#D24F6B;--roseS:#FFE1E6;--sand:#FFEAD6;--mist:#E8E4FF}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) body.bright{--bg:#1C1719;--paper:#2A2124;--line:#3E3236;--ink:#F6EEF0;--sub:#B9ABB0;--rose:#FF8DA4;--roseS:#3F2930;--sand:#3D3125;--mist:#2F2B45}}
+:root[data-theme="dark"] body.bright{--bg:#1C1719;--paper:#2A2124;--line:#3E3236;--ink:#F6EEF0;--sub:#B9ABB0;--rose:#FF8DA4;--roseS:#3F2930;--sand:#3D3125;--mist:#2F2B45}
+body.bright .hero h1 em{color:var(--rose)}
+body.bright .down{color:#fff;background:var(--rose);border:0;border-radius:999px;padding:12px 30px;letter-spacing:.16em}
+body.bright .down:hover{color:#fff;filter:brightness(.92)}
+body.bright .prod .more{color:var(--rose);border-color:var(--rose)}
+body.bright .combo{background:var(--roseS);border-color:transparent}
+body.bright .combo .go{background:var(--rose);color:#fff;border-radius:999px}
+body.bright .filter button[aria-pressed="true"]{color:var(--rose);border-color:var(--rose)}
+/* 黑體版：標題改成中粗黑體，字距稍開 */
+body.sans{--serif:var(--sans)}
+body.sans .hero h1{font-weight:700;letter-spacing:.04em;line-height:1.35}
+body.sans .sec-h h2,body.sans .combo h3{font-weight:700;letter-spacing:.08em}
+body.sans .prod h3{font-weight:700;letter-spacing:.04em}
+body.sans .prod .pr,body.sans .combo .pr{font-weight:900;letter-spacing:.01em}
+body.sans .logo{font-weight:700}
+.switches{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:20;display:grid;gap:6px;justify-items:center}
+.fontswitch{display:flex;gap:4px;background:var(--ink);border-radius:999px;padding:4px;box-shadow:0 6px 20px rgba(0,0,0,.18)}
+.fontswitch button{font:inherit;font-size:13px;letter-spacing:.06em;color:var(--paper);background:none;border:0;border-radius:999px;padding:7px 14px;cursor:pointer;white-space:nowrap}
+.fontswitch button[aria-pressed="true"]{background:var(--paper);color:var(--ink)}
+footer{margin-top:90px;padding-block:30px 40px;border-top:1px solid var(--line);text-align:center;font-size:13px;color:var(--sub);letter-spacing:.1em}
+footer .logo{display:block;font-size:17px;color:var(--ink);margin-bottom:8px}
+footer a{border-bottom:1px solid var(--line)}
+</style>
+
+<header class="top pad">
+  <div class="wrap">
+    <a class="logo" href="#">Yun端</a>
+    <nav aria-label="頁面導覽"><a href="#products">商品</a><a href="#combo">組合優惠</a><a href="https://line.me/R/ti/p/@554leuor" target="_blank" rel="noopener">聯絡</a></nav>
+  </div>
+</header>
+
+<main class="pad">
+<div class="wrap">
+  <section class="hero">
+    <p class="kicker">YUN DUAN · 生活小工具</p>
+    <h1>讓日常的小事，<br><em>輕一點。</em></h1>
+    <div class="rule"></div>
+    <p>排行程、旅途記帳、每天記帳。<br>打開手機就能用的線上小工具。</p>
+    <a class="down" href="#products">看商品</a>
+    <ul class="promise"><li>不用下載 App</li><li>不用註冊</li><li>資料只存在自己手機</li><li>一次買斷</li></ul>
+  </section>
+
+  <section class="sec" id="products" aria-labelledby="h-prod">
+    <div class="sec-h">
+      <p class="kicker">PRODUCTS</p>
+      <h2 id="h-prod">商品</h2>
+      <div class="filter" role="group" aria-label="篩選商品">
+        <button type="button" id="f-all" data-f="all" aria-pressed="true">全部</button>
+        <button type="button" id="f-travel" data-f="travel" aria-pressed="false">旅遊</button>
+        <button type="button" id="f-money" data-f="money" aria-pressed="false">記帳</button>
+      </div>
+    </div>
+    <div class="grid">
+      <a class="prod c-plan" data-g="travel" href="https://wanyun566.github.io/yun/#plan">
+        <div class="arch" style="background:var(--a-bg)"><img src="img/plan.jpg" alt="旅遊行程規劃助手的畫面：排好的第一天行程"></div>
+        <p class="cat">TRAVEL</p><h3>旅遊行程規劃助手</h3><p>選好地點和天數，行程一次排好</p>
+        <span class="pr">NT$299<small>一次買斷</small></span><span class="more">了解更多</span>
+      </a>
+      <a class="prod c-trip" data-g="travel" href="https://wanyun566.github.io/yun/#budget">
+        <div class="arch" style="background:var(--a-bg)"><img src="img/trip.jpg" alt="旅遊預算與花費管理的畫面：預算儀表板"></div>
+        <p class="cat">TRAVEL</p><h3>旅遊預算與花費管理</h3><p>旅途記帳、外幣換算、多人分帳</p>
+        <span class="pr">NT$199<small>一次買斷</small></span><span class="more">了解更多</span>
+      </a>
+      <a class="prod c-acct" data-g="money" href="https://wanyun566.github.io/Account/buy.html">
+        <div class="arch" style="background:var(--a-bg)"><img src="img/acct.jpg" alt="我的記帳本的畫面：支出列表"></div>
+        <p class="cat">DAILY</p><h3>我的記帳本</h3><p>每天記一筆，看出錢花到哪裡</p>
+        <span class="pr">NT$199<small>一次買斷</small></span><span class="more">了解更多</span>
+      </a>
+    </div>
+
+    <div class="combo" id="combo" data-g="travel">
+      <div><p class="cat">BUNDLE</p><h3>旅遊全攻略組合</h3><p>行程規劃助手＋旅遊預算與花費管理</p></div>
+      <div class="pr">NT$399<s>NT$498</s><span class="save">現省 NT$99</span></div>
+      <a class="go" href="https://wanyun566.github.io/yun/#combo">了解組合</a>
+    </div>
+  </section>
+
+  <footer>
+    <span class="logo">Yun端</span>
+    有任何問題，歡迎到 <a href="https://line.me/R/ti/p/@554leuor" target="_blank" rel="noopener">官方 LINE @554leuor</a> 詢問<br>© Yun端
+  </footer>
+</div>
+</main>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll('.filter button'),items=document.querySelectorAll('[data-g]');
+  function show(f){btns.forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.f===f))});items.forEach(function(x){x.hidden=!(f==='all'||x.dataset.g===f)})}
+  btns.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.f)})});
+  document.querySelectorAll('a[href="#combo"]').forEach(function(a){a.addEventListener('click',function(){show('all')})});
+})();
+</script>
